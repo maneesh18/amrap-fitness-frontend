@@ -54,7 +54,7 @@ export default function MembershipsPage() {
         const userMemberships = await api.getUserGyms(currentUser.id);
         setGyms(userMemberships);
       } else if (currentUser?.role === 'MANAGER') {
-        const managedGyms = await api.getManagedGyms(currentUser.id);
+        const managedGyms = await api.getManagedGyms();
         setGyms(managedGyms || []);
       }
       console.log("Loaded gyms:", gyms);
