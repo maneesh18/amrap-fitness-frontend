@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { api, User } from '@/lib/api';
 
 export interface UserWithRole extends User {
-  role: 'user' | 'manager' | 'admin';
+  role: 'USER' | 'MANAGER';
 }
 
 export function useUser() {
