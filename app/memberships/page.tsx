@@ -121,9 +121,9 @@ export default function MembershipsPage() {
       setAddMemberLoading(true);
       setAddMemberError(null);
       
-      await api.addMemberToGym({
+      await api.addUserToGym({
         gymId: selectedGym.id,
-        email: selectedUser.email 
+        userId: selectedUser.id
       });
 
       await loadGymMembers(selectedGym);
