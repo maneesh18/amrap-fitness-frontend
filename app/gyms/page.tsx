@@ -16,6 +16,7 @@ function GymsPageContent() {
     capacity: undefined,
   });
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +34,7 @@ function GymsPageContent() {
           if (response.ok) {
             const userData = await response.json();
             setUserRole(userData.role);
+            setCurrentUser(userData);
           }
         }
 
@@ -52,6 +54,10 @@ function GymsPageContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const gymData = {
+      ...formData,
+      userId: currentUser.id, // Add the current user's ID
+    };
       await api.createGym(formData);
       setShowForm(false);
       setFormData({ name: '', type: 'commercial', location: '', capacity: undefined });
