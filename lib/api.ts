@@ -47,7 +47,7 @@ export interface CreateGymDTO {
   type: 'commercial' | 'home' | 'apartment';
   location?: string;
   capacity?: number;
-  userId: string;
+  userId?: string;
 }
 
 export interface UpdateGymDTO {
