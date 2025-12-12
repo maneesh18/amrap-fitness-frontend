@@ -53,6 +53,10 @@ function GymsPageContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!currentUser) {
+      console.error('Please log in to create a gym');
+      return;
+    }
     try {
       const gymData = {
       ...formData,
