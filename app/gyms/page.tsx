@@ -62,7 +62,7 @@ function GymsPageContent() {
       ...formData,
       userId: currentUser.id, // Add the current user's ID
     };
-      await api.createGym(formData);
+      await api.createGym(gymData);
       setShowForm(false);
       setFormData({ name: '', type: 'commercial', location: '', capacity: undefined });
       
