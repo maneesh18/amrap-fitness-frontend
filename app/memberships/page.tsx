@@ -50,10 +50,10 @@ export default function MembershipsPage() {
       setLoading(true);
       setError(null);
 
-      if (currentUser?.role === 'user') {
+      if (currentUser?.role === 'USER') {
         const userMemberships = await api.getUserGyms(currentUser.id);
         setGyms(userMemberships);
-      } else if (currentUser?.role === 'manager') {
+      } else if (currentUser?.role === 'MANAGER') {
         const managedGyms = await api.getManagedGyms(currentUser.id);
         setGyms(managedGyms || []);
       }
