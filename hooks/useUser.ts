@@ -15,9 +15,16 @@ export function useUser() {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        // Assuming your API has an endpoint to get the current user's profile with role
+        // Get user data from the API
         const userData = await api.getUser();
-        setUser(userData);
+        
+        // Add a default role of 'USER' if not provided by the API
+        const userWithRole: UserWithRole = {
+          ...userData,
+          role: (userData as any).role || 'USER' // Default to 'USER' if role is not provided
+        };
+        
+        setUser(userWithRole);
       } catch (err) {
         console.error('Failed to fetch user data:', err);
         setError(err instanceof Error ? err : new Error('Failed to fetch user data'));
